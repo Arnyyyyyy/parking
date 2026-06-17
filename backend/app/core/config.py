@@ -11,6 +11,7 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     REFRESH_TOKEN_EXPIRE_DAYS: int = 7
     BACKEND_CORS_ORIGINS: str = "http://localhost:5173"
+    FRONTEND_URL: str = "http://localhost:5173"
 
     @property
     def cors_origins(self) -> List[str]:

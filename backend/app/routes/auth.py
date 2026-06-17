@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 
 from app.database import get_db
 from app import models, schemas
+from app.core.config import settings
 from app.core.security import (
     hash_password,
     verify_password,
@@ -89,7 +90,7 @@ def forgot_password(data: schemas.ForgotPasswordRequest, db: Session = Depends(g
         "expires_at": datetime.utcnow() + timedelta(minutes=20),
     }
 
-    reset_link = f"http://localhost:5173/reset-password?token={token}"
+    reset_link = f"{settings.FRONTEND_URL.rstrip('/')}/reset-password?token={token}"
 
     return {
         "message": "Ссылка для восстановления создана",
